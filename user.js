@@ -147,7 +147,9 @@ class User {
 						}
 						, 
 						{ // Value to change
-							'$set' : { 'phone' : sample.phone } 
+							'$set' : { 'phone' : sample.phone,
+									   'role'  : sample.role
+						 	} 
 						}		   
 					);
 					return "update success";

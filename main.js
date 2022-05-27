@@ -47,9 +47,10 @@ app.post('/user/login', async (req, res) => {
 	{
 		console.log('Login detail:', user)
 		return res.status(200).json({
-			username : req.body.username,
-			phone : req.body.phone,
-			role : req.body.role,
+			_id : user._id,
+			username : user.username,
+			phone : user.phone,
+			role : user.role,
 		})
 	}
 })
@@ -69,7 +70,7 @@ app.post('/user/register', async (req, res) => {
 	}
 	if(user == "creation success")
 	{
-		return res.status(200).json(req.body)
+		return res.status(200).send("creation success")
 	}
 })
 														

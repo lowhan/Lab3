@@ -6,7 +6,7 @@ jest.setTimeout(30000);
 const sample = {
 	username : "user1",					//to access other sample data = change number
 	password : "passwordfromuser1",
-	phone : "011-11111111",
+	phone : "011-111111111",
 	role : "user",
 }
 
@@ -34,6 +34,7 @@ describe('Express Route Test', function () {
 			.expect(200).then(response => {
 				expect(response.body).toEqual(
 					expect.objectContaining({ // Detail can be retrieved
+						_id : expect.any(String),
 						username: expect.any(String),
 						phone: expect.any(String),
 						role: expect.any(String),
@@ -61,17 +62,11 @@ describe('Express Route Test', function () {
 	// it('User Registration - success', async () => {
 	// 	return request
 	// 		.post('/user/register')
-	// 		.send(sample) //req.body 
-	// 		.expect('Content-Type', /json/)
-	// 		.expect(200).then(response => {
-	// 			expect(response.body).toEqual(
-	// 				expect.objectContaining({
-	// 					username: expect.any(String),
-	// 					password: expect.any(String),
-	// 					phone: expect.any(String),
-	// 					role: expect.any(String),
-	// 				})
-	// 			);
+	// 		.send(sample) //req.body for register
+	// 		.expect(200)
+	// 		.expect('Content-Type', /text/)
+	// 		.then(res => {
+	// 			expect(res.text).toBe("creation success");
 	// 		});
 	// });
 
