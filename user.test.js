@@ -23,8 +23,8 @@ const badusersample = {					// badusersample for login fail (invalid username)
 	role : "user",
 }
 
-const badpasswordsample = {				// badpsample for register fail, login fail (invalid password), update fail, delete fail 
-	username : "usertest2",					
+const badpasswordsample = {				// badpsample for register fail, login fail (invalid password)
+	username : "usertest2",				// update fail, delete fail 
 	password : "badpassword",
 	phone : "011-1111111",
 	role : "user",
@@ -69,7 +69,7 @@ describe("User Account Management", () => {
 	test("User login - success", async () => {
 		const res = await User.login(newsample);
 		expect(res.username).toBe(newsample.username);
-		expect(res.password).toEqual(expect.any(String)); //it already encrypt so... test can't expect it
+		expect(res.password).toEqual(expect.any(String)); 
 	})
 
 	test("User login - invalid username", async () => {

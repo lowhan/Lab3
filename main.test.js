@@ -24,8 +24,8 @@ const badusersample = {					// badusersample for login fail (invalid username)
 	role : "user",
 }
 
-const badpasswordsample = {				// badpsample for register fail, login fail (invalid password), update fail, delete fail 
-	username : "usertest1",					
+const badpasswordsample = {				// badpsample for register fail, login fail (invalid password),  
+	username : "usertest1",				// update fail, delete fail
 	password : "badpassword",
 	phone : "011-1111111",
 	role : "user",
@@ -40,16 +40,27 @@ const badpasswordsample = {				// badpsample for register fail, login fail (inva
 
 describe('Express Route Test', function () {
 	////////////////////////////////////////////////////////////////////////
-	// Testing
-	it('should return Welcome to OUR page !', async () => {
+	// get 
+
+	// testing
+	it('should return Welcome to OUR page !', async () => {		
 		return request.get('/test')
 			.expect(200)
 			.expect('Content-Type', /text/)
 			.then(res => {
 				expect(res.text).toBe('testing... you are good for now');
 			});
-	})
-	
+	});
+
+	it('View User - success', async () => {
+		return request.get('/user')
+			.expect(200)
+			.expect('Content-Type', /json/)
+			.then(res => {
+					expect(res.body).toEqual(expect.any(Array));
+			});
+	});
+
 	///////////////////////////////////////////////////////////////////////
 	// post - create
 
